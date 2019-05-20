@@ -16,6 +16,41 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        UINavigationBar.appearance().tintColor = .white
+        UINavigationBar.appearance().barTintColor = .flatCoffee
+        UINavigationBar.appearance().largeTitleTextAttributes = [
+            NSAttributedString.Key.foregroundColor : UIColor.white
+        ]
+        UINavigationBar.appearance().titleTextAttributes = [
+            NSAttributedString.Key.foregroundColor : UIColor.white
+        ]
+        
+        window = UIWindow()
+        window?.makeKeyAndVisible()
+        
+        let productsController = ProductsController()
+        let cartController = CartController()
+        let tabBarController = UITabBarController()
+        let productsNavController = UINavigationController(rootViewController: productsController)
+        let cartNavController = UINavigationController(rootViewController: cartController)
+        
+        tabBarController.tabBar.tintColor = .flatCoffee
+        
+        productsNavController.tabBarItem.image = UIImage(named: "coffee-to-go")
+        productsNavController.tabBarItem.title = "Menu"
+        cartNavController.tabBarItem.image = UIImage(named: "shopping_cart_loaded")
+        cartNavController.tabBarItem.title = "Cart"
+        
+        tabBarController.setViewControllers([
+            productsNavController,
+            cartNavController
+        ], animated: true)
+        tabBarController.selectedViewController = productsNavController
+        productsNavController.tabBarItem.title = "Menu"
+        
+        
+        window?.rootViewController = tabBarController
+        
         return true
     }
 

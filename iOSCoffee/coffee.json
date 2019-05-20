@@ -1,0 +1,23 @@
+[
+  {
+    "name": "Americano",
+    "type": "coffee",
+    "description" : "Espresso and Water. Simple.",
+    "usdPrice" : 5,
+    "imageName" : "americano"
+  },
+  {
+    "name": "Cappuccino",
+    "type": "coffee",
+    "description" : "Espresso and frothy milk. Enjoy!",
+    "usdPrice" : 8,
+    "imageName" : "cappuccino"
+  },
+  {
+    "name": "Flat White",
+    "type": "coffee",
+    "description" : "Double shot of espresso and Micro-foamed milk. Our favourite!",
+    "usdPrice" : 8,
+    "imageName" : "flatwhite"
+  }
+]

@@ -112,11 +112,7 @@ class ProductDetailController: UIViewController{
     @objc private func addToCart() {
         guard let selectedProduct = self.product else {return}
         var selectedSize: ProductSize
-        if sizeTypeControl.titleForSegment(at: sizeTypeControl.selectedSegmentIndex) == ProductSize.standard.rawValue {
-            selectedSize = .standard
-        } else {
-            selectedSize = .big
-        }
+        selectedSize = sizeTypeControl.titleForSegment(at: sizeTypeControl.selectedSegmentIndex) == ProductSize.standard.rawValue ? .standard : .big
         Cart.shared.addToCart(ordered: OrderedProduct(product: selectedProduct, size: selectedSize, quantity: 1))
         animatePopup(productName: selectedProduct.name, size: selectedSize.rawValue)
     }
@@ -155,11 +151,8 @@ class ProductDetailController: UIViewController{
     
     @objc func sizeChanged() {
         guard let selectedProduct = self.product else {return}
-        if sizeTypeControl.titleForSegment(at: sizeTypeControl.selectedSegmentIndex) == ProductSize.standard.rawValue {
-            orderButtonContainer.orderButton.setTitle("Order for \(selectedProduct.usdPrice)$", for: .normal)
-        } else {
-            orderButtonContainer.orderButton.setTitle("Order for \(selectedProduct.usdPrice + selectedProduct.usdPrice / 3)$", for: .normal)
-        }
+        let newTitle = sizeTypeControl.titleForSegment(at: sizeTypeControl.selectedSegmentIndex) == ProductSize.standard.rawValue ? "Order for \(selectedProduct.usdPrice)$" : "Order for \(selectedProduct.usdPrice + selectedProduct.usdPrice / 3)$"
+        orderButtonContainer.orderButton.setTitle(newTitle, for: .normal)
     }
 
     private func setupUI() {

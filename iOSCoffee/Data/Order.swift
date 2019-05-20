@@ -9,6 +9,7 @@
 import Foundation
 
 struct Order: Codable {
-    var products: [OrderedProduct]
+    var products: [[String : Int]]
     var buyerName: String
+    var total: Int
 }
